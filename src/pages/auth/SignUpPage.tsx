@@ -1,10 +1,25 @@
-import { Link } from "react-router-dom";
+import AuthForm from "./AuthForm";
 
-const SignUpPage = () => {
+const SignUpPage: React.FC = () => {
   return (
-    <div>
-      sign up page
-      <Link to={"/"}>Go to Sign In</Link>
+    <div className="flex justify-center items-center">
+      <AuthForm
+        fields={[
+          {
+            label: "username",
+            type: "text",
+          },
+          {
+            label: "password",
+            type: "password",
+          },
+          {
+            label: "confirm password",
+            type: "password",
+          },
+        ]}
+        submitButtonLabel="create account"
+      />
     </div>
   );
 };
