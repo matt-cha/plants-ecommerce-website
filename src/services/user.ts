@@ -1,6 +1,6 @@
 import apiFetch from "./apiFetch";
 
-type CreateUserInput = {
+type UserInput = {
   username: string;
   password: string;
 };
@@ -8,8 +8,11 @@ type CreateUserInput = {
 export const createUser = ({
   username,
   password,
-}: CreateUserInput): Promise<Response> =>
+}: UserInput): Promise<Response> =>
   apiFetch("POST", "/users", {
     username,
     password,
   });
+
+export const createSession = ({ username, password }: UserInput) =>
+  apiFetch("POST", "/users/session", { username, password });
