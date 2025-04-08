@@ -44,7 +44,10 @@ const AuthForm = ({ fields, submitButtonLabel, onSubmit }: AuthFormProps) => {
         />
       ))}
 
-      <button className="w-full py-2 mt-4 relative text-white rounded-lg bg-emerald-700">
+      <button
+        type="submit"
+        className="w-full py-2 mt-4 relative text-white rounded-lg bg-emerald-700"
+      >
         {submitButtonLabel}
         {loading && (
           <div className="absolute top-0 right-4 flex items-center h-full">
