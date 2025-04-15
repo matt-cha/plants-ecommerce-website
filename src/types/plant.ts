@@ -6,7 +6,10 @@ export type PlantImage = {
 };
 
 export type Plant = {
+  id: string;
   name: string;
   price: number;
   images: PlantImage[];
+  botanical_name: string;
+  description: string;
 };
