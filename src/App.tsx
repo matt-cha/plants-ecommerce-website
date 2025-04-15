@@ -6,6 +6,7 @@ import * as userService from "services/user";
 import { jwtDecode, JwtPayload } from "jwt-decode";
 import SessionContext from "contexts/SessionContent";
 import PlantListPage from "pages/PlantListPage";
+import PlantShowPage from "pages/PlantShowPage";
 type SessionJwtPayLoad = JwtPayload & {
   username: string;
 };
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="/" element={<SignInPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/plants" element={<PlantListPage />} />
+          <Route path="/plants/:plantId" element={<PlantShowPage />} />
         </Routes>
       </BrowserRouter>
     </SessionContext.Provider>

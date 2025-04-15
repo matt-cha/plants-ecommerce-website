@@ -1,27 +1,21 @@
 import { Plant, PlantImage } from "types/plant";
 import { useState } from "react";
-const POT_COLORS = {
-  stone: "bg-stone-200",
-  slate: "bg-slate-300",
-  sky: "bg-sky-700",
-  black: "bg-gray-600",
-  white: "bg-gray-50",
-  amber: "bg-amber-600",
-};
 
-const getRandomIndex = (array: PlantImage[]): number =>
-  Math.floor(Math.random() * array.length);
+import { Link } from "react-router-dom";
+import { POT_COLORS, getRandomIndex } from "shared-components/util";
 
 const PlantItem = ({ plant }: { plant: Plant }) => {
   const [imageIndex, setImageIndex] = useState(() =>
-    getRandomIndex(plant.images)
+    getRandomIndex<PlantImage>(plant.images)
   );
   return (
     <div className=" mx-5 my-8">
-      <img
-        className="w-[280px] h-[320px] rounded-md"
-        src={plant.images[imageIndex].src}
-      />
+      <Link to={`/plants/${plant.id}`}>
+        <img
+          className="w-[280px] h-[320px] rounded-md"
+          src={plant.images[imageIndex].src}
+        />
+      </Link>
       <div className="flex justify-between my-3">
         <div className="text-xl font-playfair text-emerald-700">
           {plant.name}
