@@ -17,8 +17,6 @@ export const createUser = ({
 export const createSession = ({ username, password }: UserInput) =>
   apiFetch("POST", "/users/session", { username, password });
 
-const CAPSTONE_SESSION_STORAGE_KEY = "capstone_session_token";
-console.log(CAPSTONE_SESSION_STORAGE_KEY);
 export const setSessionTokenStorage = (capstoneSessionToken: string) =>
   localStorage.setItem("capstone_session_token", capstoneSessionToken);
 
