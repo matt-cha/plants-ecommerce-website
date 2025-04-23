@@ -5,7 +5,9 @@ type AddPlantToCartParams = {
   quantity: number;
   potColor: string;
 };
-
+type RemoveItemFromCartParams = {
+  itemId: number;
+};
 export const addPlantToCart = ({
   plantId,
   quantity,
@@ -17,3 +19,9 @@ export const addPlantToCart = ({
   });
 
 export const getCart = () => apiFetch("GET", "/cart");
+
+export const removeItemFromCart = ({
+  itemId,
+}: RemoveItemFromCartParams): Promise<Response> => {
+  return apiFetch("DELETE", `/cart/${itemId}`);
+};
