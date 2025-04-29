@@ -24,7 +24,7 @@ const ModalWrapper = ({
             onCloseClick();
           }
         }}
-        className="fixed backdrop-blur-sm top-0 flex justify-end items-start left-0 w-full h-full bg-black/30"
+        className=" z-20 fixed backdrop-blur-sm top-0 flex justify-end items-start left-0 w-full h-full bg-black/30"
       >
         <button className="absolute top-0 right-0 p-2 " onClick={onCloseClick}>
           <i className=" text-4xl text-emerald-400 fa-regular fa-circle-xmark"></i>

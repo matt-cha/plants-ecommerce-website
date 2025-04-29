@@ -1,12 +1,19 @@
 import SessionContext from "contexts/SessionContent";
 import { useContext } from "react";
+import { motion } from "framer-motion";
+
 type MobileMenuModalProps = {
   onCartOpenClick: () => void;
 };
 const MobileMenuModal = ({ onCartOpenClick }: MobileMenuModalProps) => {
   const sessionContext = useContext(SessionContext);
   return (
-    <div className="bg-emerald-800 items-start pb-6 rounded-bl-lg shadow-md text-emerald-200 flex text-lg flex-col pt-12 pr-12">
+    <motion.div
+      initial={{ translateY: "-100%" }}
+      animate={{ translateY: 0 }}
+      transition={{ duration: 0.5 }}
+      className="bg-emerald-800 items-start pb-6 rounded-bl-lg shadow-md text-emerald-200 flex text-lg flex-col pt-12 pr-12"
+    >
       <div className="px-8 py-4">
         <i className="mr-2 text-2xl fa-solid fa-user"></i>
         {sessionContext?.username}
@@ -19,7 +26,7 @@ const MobileMenuModal = ({ onCartOpenClick }: MobileMenuModalProps) => {
         <i className="mr-2 text-2xl fa-solid fa-cart-shopping"></i>
         cart
       </button>
-    </div>
+    </motion.div>
   );
 };
 

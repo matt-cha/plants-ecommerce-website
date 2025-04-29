@@ -3,7 +3,7 @@ import { useContext, useEffect, useState, useCallback } from "react";
 import * as cartService from "services/cart";
 import LoadingSpinner from "shared-components/LoadingSpinner";
 import CartItem from "./CartItem";
-
+import { motion } from "framer-motion";
 type CartItemType = {
   id: number;
   image_src: string;
@@ -12,11 +12,7 @@ type CartItemType = {
   quantity: number;
   price_per_unit: number;
 };
-const CartModal = ({
-  setCartOpen,
-}: {
-  setCartOpen: (open: boolean) => void;
-}) => {
+const CartModal = () => {
   const sessionContext = useContext(SessionContext);
   const [isLoading, setIsLoading] = useState(true);
   const [items, setItems] = useState<CartItemType[]>([]);
@@ -39,7 +35,12 @@ const CartModal = ({
     subTotal += item.quantity * item.price_per_unit;
   }
   return (
-    <div className="flex flex-col bg-white h-screen w-full max-w-xl">
+    <motion.div
+      initial={{ translateX: "100%" }}
+      animate={{ translateX: 0 }}
+      transition={{ duration: 0.5 }}
+      className="flex flex-col bg-white h-screen w-full max-w-xl"
+    >
       <div className="bg-emerald-800 text-center py-7  shadow-md text-3xl text-white font-playfair">
         {sessionContext?.username}'s Cart'
       </div>
@@ -76,7 +77,7 @@ const CartModal = ({
           </div>
         </>
       )}
-    </div>
+    </motion.div>
   );
 };
 export default CartModal;
