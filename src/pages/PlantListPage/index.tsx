@@ -5,7 +5,7 @@ import * as plantService from "services/plant";
 import PlantItem from "./PlantItem";
 import { Plant } from "types/plant";
 import LoadingSpinner from "shared-components/LoadingSpinner";
-
+import { motion } from "framer-motion";
 const PlantListPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [plants, setPlants] = useState<Plant[]>([]);
@@ -31,8 +31,19 @@ const PlantListPage = () => {
                 Plants in Stock
               </div>
               <div className="flex flex-wrap">
-                {plants.map((plant) => (
-                  <PlantItem key={plant.name} plant={plant} />
+                {plants.map((plant, index) => (
+                  <motion.div
+                    key={plant.name}
+                    initial={{ opacity: 0, translateY: "20px" }}
+                    whileInView={{ opacity: 1, translateY: 0 }}
+                    transition={{
+                      delay: 0.3 + (index % 3) * 0.2,
+                      duration: 0.5,
+                    }}
+                    viewport={{ once: true }}
+                  >
+                    <PlantItem plant={plant} />
+                  </motion.div>
                 ))}
               </div>
             </div>

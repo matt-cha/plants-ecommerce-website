@@ -7,6 +7,7 @@ import { jwtDecode, JwtPayload } from "jwt-decode";
 import SessionContext from "contexts/SessionContent";
 import PlantListPage from "pages/PlantListPage";
 import PlantShowPage from "pages/PlantShowPage";
+import ScrollToTop from "shared-components/ScrollToTop";
 type SessionJwtPayLoad = JwtPayload & {
   username: string;
 };
@@ -32,6 +33,7 @@ const App = () => {
       }}
     >
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<SignInPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />

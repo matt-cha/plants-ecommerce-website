@@ -4,6 +4,9 @@ import BenefitBox from "./BenefitBox";
 import { useState } from "react";
 import PlantPurchaseOptions from "./PlantPurchaseOptions";
 import { getRandomIndex } from "shared-components/util";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
+
 const PlantInfoSection = ({ plant }: { plant: Plant }) => {
   const [imageIndex, setImageIndex] = useState(() =>
     getRandomIndex(plant.images)
@@ -14,7 +17,9 @@ const PlantInfoSection = ({ plant }: { plant: Plant }) => {
         <div className="block md:hidden mb-8">
           <PlantHeading plant={plant} />
         </div>
-        <img className="rounded-lg" src={plant.images[imageIndex].src}></img>
+        <Zoom>
+          <img className="rounded-lg" src={plant.images[imageIndex].src}></img>
+        </Zoom>
         <div className="flex mt-4">
           <BenefitBox
             icon="far fa-check-circle"
